@@ -1,20 +1,35 @@
 'use client';
-
-import { useState } from 'react';
+import { useQuery, gql } from "@apollo/client";
 import Post from "../Post"
 
-const Posts = ({ posts = [] }) => {
-	const [currentPosts, setCurrentPosts] = useState(posts);
-
-	const removePost = (index) => {
-		const newPosts = [...currentPosts];
-		newPosts.splice(index, 1);
-		setCurrentPosts(newPosts);
+const POSTS_QUERY = `
+	query Posts($offset: Int!, $limit: Int!) {
+		Post(offset: $offset, limit: $limit) {
+			id
+			title
+			content
+		}
 	}
+`
+
+const Posts = () => {
+	const { loading, data } = useQuery(gql`${POSTS_QUERY}`, {
+		variables: {
+			offset: 0,
+			limit: 10
+		}
+	})
+
+	if (loading || !data) {
+		return <div>Loading state</div>
+	}
+
+	const { Post: posts } = data;
+
 	return (
 		<>
-			{currentPosts.map((post, i) => (
-				<Post post={post} key={`${i}_post`} onHide={() => removePost(i)} />
+			{posts.map((post, i) => (
+				<Post post={post} key={`${i}_post`} />
 			))}
 		</>
 	);

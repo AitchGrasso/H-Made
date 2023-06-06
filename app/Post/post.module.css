@@ -3,6 +3,7 @@
 	border: 1px lightgray solid;
 	padding: 12px;
 	margin: 8px 0;
+	overflow-wrap: anywhere;
 }
 
 .title {
