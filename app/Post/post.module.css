@@ -1,0 +1,14 @@
+.container {
+	width: 240px;
+	border: 1px lightgray solid;
+	padding: 12px;
+	margin: 8px 0;
+}
+
+.title {
+	font-weight: 600;
+	margin: 4px 2px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
