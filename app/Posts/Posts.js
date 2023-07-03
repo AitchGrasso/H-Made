@@ -13,18 +13,46 @@ const POSTS_QUERY = `
 `
 
 const Posts = () => {
-	const { loading, data } = useQuery(gql`${POSTS_QUERY}`, {
-		variables: {
-			offset: 0,
-			limit: 10
-		}
-	})
+	// const { loading, data } = useQuery(gql`${POSTS_QUERY}`, {
+	// 	variables: {
+	// 		offset: 0,
+	// 		limit: 10
+	// 	}
+	// })
 
-	if (loading || !data) {
-		return <div>Loading state</div>
-	}
+	// if (loading || !data) {
+	// 	return <div>Loading state</div>
+	// }
 
-	const { Post: posts } = data;
+	// const { Post: posts } = data;
+
+	const posts = [
+		{
+			title: "Post Title",
+			user: "Jon Saleh",
+			date: "2023/01/01",
+			content: "Post Content"
+		},
+		{
+			title: "Post Title",
+			user: "Jon Saleh",
+			date: "2023/01/01",
+			content: "Post Content"
+		},
+		{
+			title: "Post Title",
+			user: "Jon Saleh",
+			date: "2023/01/01",
+			content: "Post Content"
+		},
+		{
+			title: "Post Title",
+			user: "Jon Saleh",
+			date: "2023/01/01",
+			content: "Post Content"
+		},
+	
+	];
 
 	return (
 		<>
